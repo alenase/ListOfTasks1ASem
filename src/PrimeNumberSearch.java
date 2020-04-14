@@ -85,54 +85,5 @@ public class PrimeNumberSearch extends Thread {
 
     }
 
-    /*
-    private int step(){
-        if (Task1.lastDigit > Task1.quantityOfThreads){
-            if (Task1.lastDigit % 2 != 0) {
-                return ((Task1.lastDigit + 1) / Task1.quantityOfThreads);
-            } else if (Task1.quantityOfThreads % 2 != 0) {
-                return ((Task1.lastDigit ) / Task1.quantityOfThreads +1);
-            } else
-                return (Task1.lastDigit + 1 / Task1.quantityOfThreads);
-
-        }
-        else {
-            return 1;
-        }
-
-    }
-
-    private int firstIndex(){
-        int k = 0;
-        for (Map.Entry<Integer, Thread> pair : Task1.mapOfThreads.entrySet( )) {
-            if (Thread.currentThread( ).getName().equals(pair.getValue().getName()))
-                k = pair.getKey();
-        }
-
-        if (k < Task1.quantityOfThreads) {
-            return k * step( ) + 1;
-        }
-        return 0;
-    }
-
-    private int lastIndex(){
-        int k = 0;
-        for (Map.Entry<Integer, Thread> pair : Task1.mapOfThreads.entrySet( )) {
-            if (Thread.currentThread( ).getName().equals(pair.getValue().getName()))
-                k = pair.getKey();
-        }
-
-        if (k < Task1.quantityOfThreads) {
-            return k * step( ) + step();
-        }
-        return 0;
-    }
-
-
-
-     */
-
-
-
 
 }
