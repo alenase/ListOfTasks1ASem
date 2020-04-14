@@ -60,6 +60,7 @@ public class Task1 {
 
     private static void generatingThreads(){
         checkingQuantityOfPossibleThreads();
+        System.out.println(lastThreadIndex );
         for (int i = 0; i < lastThreadIndex; i++) {
             mapOfThreads.put(i, new PrimeNumberSearch());
             mapOfThreads.get(i).start();
@@ -67,10 +68,11 @@ public class Task1 {
     }
 
     private static void checkingQuantityOfPossibleThreads(){
-        if (quantityOfThreads > lastDigit - firstDigit) {
-            lastThreadIndex = Math.min(quantityOfThreads, lastDigit - firstDigit);
-            quantityOfThreads = lastDigit - firstDigit;
-        }
+            lastThreadIndex = quantityOfThreads;
+            if (quantityOfThreads > lastDigit - firstDigit ) {
+                lastThreadIndex = Math.min(quantityOfThreads, (lastDigit - firstDigit));
+                quantityOfThreads = lastDigit - firstDigit;
+            }
     }
 
     private static void askingNumbers(){

@@ -11,16 +11,16 @@ public class PrimeNumberSearch extends Thread {
 
     public void run(){
         cycle();
-        putValueParticular();
+        generatingValueParticularlist();
 
     }
 
-    private void putValueParticular(){
+    private void generatingValueParticularlist(){
         Task1.listOfPrimeNumbersParticular.addAll(listOfPrimeNumbers);
     }
 
     private void cycle() {
-        //System.out.println(firstIndex() + " " + lastIndex() ); //checking steps
+        System.out.println(firstIndex() + " " + lastIndex() ); //checking steps
         for (int i = firstIndex() ; i <= lastIndex(); i++) {
             if (ifPrimeNumber(i) && !isInterrupted()) {
                 Task1.listOfPrimeNumbersGeneral.add(i);
@@ -41,17 +41,12 @@ public class PrimeNumberSearch extends Thread {
     }
 
 
-
-
-
-
     private int step(){
         if (Task1.lastDigit - Task1.firstDigit > Task1.quantityOfThreads){
             if (Task1.lastDigit - Task1.firstDigit % Task1.quantityOfThreads != 0) {
                 stepCheck = true;
             }
-
-                return (Task1.lastDigit - Task1.firstDigit)/ Task1.quantityOfThreads;
+            return (Task1.lastDigit - Task1.firstDigit)/ Task1.quantityOfThreads;
         }
         else {
             return 1;
@@ -65,7 +60,7 @@ public class PrimeNumberSearch extends Thread {
                 k = pair.getKey();
         }
 
-        return k * step( )  + Task1.firstDigit;
+        return k * step( ) + Task1.firstDigit;
 
     }
 
