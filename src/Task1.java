@@ -62,13 +62,15 @@ public class Task1 {
         checkingQuantityOfPossibleThreads();
         for (int i = 0; i < lastThreadIndex; i++) {
             mapOfThreads.put(i, new PrimeNumberSearch());
-
             mapOfThreads.get(i).start();
         }
     }
 
     private static void checkingQuantityOfPossibleThreads(){
-        lastThreadIndex = Math.min(quantityOfThreads, lastDigit);
+        if (quantityOfThreads > lastDigit - firstDigit) {
+            lastThreadIndex = Math.min(quantityOfThreads, lastDigit - firstDigit);
+            quantityOfThreads = lastDigit - firstDigit;
+        }
     }
 
     private static void askingNumbers(){
