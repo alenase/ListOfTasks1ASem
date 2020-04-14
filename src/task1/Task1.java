@@ -1,4 +1,4 @@
-import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
+package task1;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,7 +12,7 @@ public class Task1 {
     static int lastThreadIndex;
     static List<Integer> listOfPrimeNumbersGeneral = new ArrayList<>();
     static List<Integer> listOfPrimeNumbersParticular = new ArrayList<>();
-    public static Map<Integer, Thread> mapOfThreads = new HashMap<>();
+    public static List<Thread> listOfThreads = new ArrayList<>();
     static long startTime = System.currentTimeMillis();
 
     public static void main(String[] args) {
@@ -50,20 +50,21 @@ public class Task1 {
 
 
     private static void endingThreads() {
-        for (Map.Entry<Integer, Thread> pair : mapOfThreads.entrySet( )) {
-            try {
-                pair.getValue( ).join( );
-            } catch (InterruptedException ignored) {
+        for (Thread thread : listOfThreads) {
+            try{
+            thread.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace( );
             }
         }
     }
 
     private static void generatingThreads(){
         checkingQuantityOfPossibleThreads();
-        System.out.println(lastThreadIndex );
+        //System.out.println(lastThreadIndex );
         for (int i = 0; i < lastThreadIndex; i++) {
-            mapOfThreads.put(i, new PrimeNumberSearch());
-            mapOfThreads.get(i).start();
+            listOfThreads.add(new PrimeNumberSearch(i));
+            listOfThreads.get(i).start();
         }
     }
 

@@ -1,13 +1,17 @@
-import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
+package task1;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class PrimeNumberSearch extends Thread {
-
+    int count;
     private static List<Integer> listOfPrimeNumbers = new ArrayList<>();
     private boolean stepCheck = false;
+
+    PrimeNumberSearch(int count){
+        this.count = count;
+    }
 
     public void run(){
         cycle();
@@ -20,7 +24,7 @@ public class PrimeNumberSearch extends Thread {
     }
 
     private void cycle() {
-        System.out.println(firstIndex() + " " + lastIndex() ); //checking steps
+        //System.out.println(firstIndex() + " " + lastIndex() ); //checking steps
         for (int i = firstIndex() ; i <= lastIndex(); i++) {
             if (ifPrimeNumber(i) && !isInterrupted()) {
                 Task1.listOfPrimeNumbersGeneral.add(i);
@@ -54,28 +58,16 @@ public class PrimeNumberSearch extends Thread {
     }
 
     private int firstIndex(){
-        int k = 0;
-        for (Map.Entry<Integer, Thread> pair : Task1.mapOfThreads.entrySet( )) {
-            if (Thread.currentThread( ).getName().equals(pair.getValue().getName()))
-                k = pair.getKey();
-        }
-
-        return k * step( ) + Task1.firstDigit;
+        return count * step( ) + Task1.firstDigit;
 
     }
 
     private int lastIndex(){
-        int k = 0;
-        for (Map.Entry<Integer, Thread> pair : Task1.mapOfThreads.entrySet( )) {
-            if (Thread.currentThread( ).getName().equals(pair.getValue().getName()))
-                k = pair.getKey();
-        }
-
-        if (k == Task1.lastThreadIndex -1 && stepCheck) {
+        if (count == Task1.lastThreadIndex -1 && stepCheck) {
 
             return Task1.lastDigit ;
         } else {
-            return k * step( ) + step() + Task1.firstDigit;
+            return count * step( ) + step() + Task1.firstDigit;
         }
 
     }
