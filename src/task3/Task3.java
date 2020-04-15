@@ -11,10 +11,13 @@ public class Task3 {
     static List<String> list = new ArrayList<>();
     static Set<String> words = new HashSet<>();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         openFile(askFile());
-        showResult();
+        Thread thread = new SearchingThread();
+        thread.start();
+        thread.join();
+
     }
 
     private static String askFile(){
@@ -47,12 +50,12 @@ public class Task3 {
 
 
 
-    private static void showResult(){
+    /*private static void showResult(){
         for (String word: words) {
             System.out.print(word + " ");
         }
     }
-
+    */
 
 
 

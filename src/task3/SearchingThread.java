@@ -85,10 +85,10 @@ public class SearchingThread extends Thread{
     private static void showingLongestString(){
         int count = 0;
         String longestString= findLongestString();
-        System.out.println("Its indexes are" );
+        System.out.print("Longest string is " + longestString + " \nTheir indexes are: " );
         for (String string: Task3.list) {
             if (string.contains(longestString)) {
-                System.out.print(string.indexOf(longestString));
+                System.out.print(string.indexOf(longestString) + " ");
                 count++;
             }
         }
