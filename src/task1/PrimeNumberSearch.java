@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class PrimeNumberSearch extends Thread {
     int count;
-    private static List<Integer> listOfPrimeNumbers = new ArrayList<>();
+
     private boolean stepCheck = false;
 
     PrimeNumberSearch(int count){
@@ -15,12 +15,8 @@ public class PrimeNumberSearch extends Thread {
 
     public void run(){
         cycle();
-        generatingValueParticularlist();
 
-    }
 
-    private void generatingValueParticularlist(){
-        Task1.listOfPrimeNumbersParticular.addAll(listOfPrimeNumbers);
     }
 
     private void cycle() {
@@ -28,7 +24,6 @@ public class PrimeNumberSearch extends Thread {
         for (int i = firstIndex() ; i <= lastIndex(); i++) {
             if (ifPrimeNumber(i) && !isInterrupted()) {
                 Task1.listOfPrimeNumbersGeneral.add(i);
-                listOfPrimeNumbers.add(i);
             }
         }
     }
