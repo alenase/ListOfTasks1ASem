@@ -10,16 +10,24 @@ public class Task3 {
 
     static List<String> list = new ArrayList<>();
     static Set<String> words = new HashSet<>();
+    static Thread thread = new SearchingThread();
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args)  {
 
         openFile(askFile());
-        Thread thread = new SearchingThread();
-        thread.start();
-        thread.join();
+        runThread();
 
     }
 
+
+    static void runThread(){
+        thread.start();
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace( );
+        }
+    }
     private static String askFile(){
         BufferedReader reader = new BufferedReader (new InputStreamReader(System.in));
         try {
@@ -50,7 +58,7 @@ public class Task3 {
 
 
 
-    /*private static void showResult(){
+    /*private static void showAllWords(){
         for (String word: words) {
             System.out.print(word + " ");
         }
