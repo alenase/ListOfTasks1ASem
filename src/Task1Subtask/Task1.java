@@ -12,7 +12,6 @@ public class Task1 {
     static int firstDigit, lastDigit;
     static int quantityOfThreads;
     static int lastThreadIndex;
-    static List<Integer> listOfPrimeNumbersGeneral = new ArrayList<>();
     static List<Integer> listOfPrimeNumbersParticular = new ArrayList<>();
     public static List<Thread> listOfThreads = new ArrayList<>();
     static long startTime = System.currentTimeMillis();
@@ -24,21 +23,12 @@ public class Task1 {
 
         endingThreads();
 
-        showingResultGeneral();
+
 
         showingResultParticular();
     }
 
 
-    private static void showingResultGeneral(){
-        long endOfPrimeNumbersGeneral = System.currentTimeMillis();
-        System.out.print("\nGeneral list result: " );
-        Collections.sort(listOfPrimeNumbersGeneral);
-        for (Integer integer : listOfPrimeNumbersGeneral) {
-            System.out.print(integer + " ");
-        }
-        System.out.print("\nThe function was running withing " + (endOfPrimeNumbersGeneral - startTime) + " sec");
-    }
 
     private static void showingResultParticular(){
         long endOfPrimeNumbersParticular = System.currentTimeMillis();
