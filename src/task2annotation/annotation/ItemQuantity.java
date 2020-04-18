@@ -1,6 +1,6 @@
 package task2annotation.annotation;
 
-public class ToyQuantity {
+public class ItemQuantity {
 
     @Injection(stringName = "item.quantity")
     private int fieldQuantity;

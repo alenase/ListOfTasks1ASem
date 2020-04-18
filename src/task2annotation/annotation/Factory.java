@@ -23,28 +23,8 @@ public class Factory {
     }
 
     private static Factory createContextInitializer() throws IOException {
-//        ClassLoader loader = Thread.currentThread().getContextClassLoader();
-//        URL resourceUrl = Thread.currentThread().getContextClassLoader().getResource("");
-////        if (Objects.isNull(fileUrl)) {
-////            throw new NoSuchFileException(FILE_NAME);
-////        }
-//        System.out.println(resourceUrl.getPath() + FILE_NAME);
-//        String defaultConfigPath = resourceUrl.getPath() + FILE_NAME;
-//        props.load(new FileInputStream(defaultConfigPath));
-//        URL fileUrl = loader.getResource(FILE_NAME);
-//        System.out.println(loader.getResource(FILE_NAME));
-//
-//        if (Objects.isNull(fileUrl)) {
-//            throw new NoSuchFileException(FILE_NAME);
-//        }
-//
-//
-//        BufferedReader reader = Files.newBufferedReader(Paths.get(fileUrl.getPath()));
-//
-//        props.load(reader);
         ClassLoader loader = Thread.currentThread().getContextClassLoader();
         URL fileUrl = loader.getResource(FILE_NAME);
-        System.out.println(fileUrl );
 
         if (Objects.isNull(fileUrl)) {
             throw new NoSuchFileException(FILE_NAME);
@@ -56,72 +36,60 @@ public class Factory {
         return new Factory();
     }
 
-    public ToyName createFieldName() {
-        ToyName toyName = new ToyName();
+    public ItemName createFieldName() {
+        ItemName itemName = new ItemName();
 
-        Field[] fields = toyName.getClass().getDeclaredFields();
-
-        for (Field f: fields) {
-            if (f.isAnnotationPresent(Injection.class)) {
-                setValue(f, toyName);
-            }
-        }
-
-        return toyName;
-    }
-
-    public ToyPrice createFieldPrice() {
-        ToyPrice toyPrice = new ToyPrice();
-        Field[] fields = toyPrice.getClass().getDeclaredFields();
+        Field[] fields = itemName.getClass().getDeclaredFields();
 
         for (Field f: fields) {
             if (f.isAnnotationPresent(Injection.class)) {
-                setValue(f, toyPrice);
+                setValue(f, itemName);
             }
         }
-        return toyPrice;
+
+        return itemName;
     }
 
-
-    public ToyQuantity createFieldQuantity() {
-        ToyQuantity toyQuantity = new ToyQuantity();
-        Field[] fields = toyQuantity.getClass().getDeclaredFields();
+    public ItemPrice createFieldPrice() {
+        ItemPrice itemPrice = new ItemPrice();
+        Field[] fields = itemPrice.getClass().getDeclaredFields();
 
         for (Field f: fields) {
             if (f.isAnnotationPresent(Injection.class)) {
-                setValue(f, toyQuantity);
+                setValue(f, itemPrice);
             }
         }
-        return toyQuantity;
+        return itemPrice;
     }
 
-    public ToySerialNumber createFieldSerialNumber() {
-        ToySerialNumber toySerialNumber = new ToySerialNumber();
-        Field[] fields = toySerialNumber.getClass().getDeclaredFields();
+
+    public ItemQuantity createFieldQuantity() {
+        ItemQuantity itemQuantity = new ItemQuantity();
+        Field[] fields = itemQuantity.getClass().getDeclaredFields();
 
         for (Field f: fields) {
             if (f.isAnnotationPresent(Injection.class)) {
-                setValue(f, toySerialNumber);
+                setValue(f, itemQuantity);
             }
         }
-        return toySerialNumber;
+        return itemQuantity;
     }
-
-
-
 
 
     private void setValue(Field field, Object item) {
         Injection injector = field.getAnnotation(Injection.class);
 
         field.setAccessible(true);
+
         String value = props.getProperty(injector.stringName());
-        final Class<?> type = field.getType();
+        Class<?> type = field.getType();
         try {
             if (String.class.isAssignableFrom(type)) {
                 field.set(item, value);
             } else if (int.class.isAssignableFrom(type)) {
                 field.set(item, Integer.parseInt(value));
+            } else if (double.class.isAssignableFrom(type)){
+                field.set(item, Double.parseDouble(value));
             } else {
                 System.out.println("Can not find assignable type for: " + field.toString());
             }
