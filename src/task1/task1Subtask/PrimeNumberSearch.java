@@ -1,4 +1,4 @@
-package Task1Subtask;
+package task1.task1Subtask;
 
 import java.util.ArrayList;
 import java.util.List;

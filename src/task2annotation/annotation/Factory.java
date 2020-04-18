@@ -51,7 +51,6 @@ public class Factory {
         }
 
         BufferedReader reader = Files.newBufferedReader(Paths.get(fileUrl.getPath().replaceFirst("/", "")));
-        //System.out.println(reader);
         props.load(reader);
 
         return new Factory();

@@ -1,8 +1,4 @@
-package task1;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+package task1.task1;
 
 public class PrimeNumberSearch extends Thread {
     int count;
