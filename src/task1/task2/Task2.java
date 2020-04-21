@@ -19,19 +19,19 @@ public class Task2 {
         static long startTime = System.currentTimeMillis();
 
         public static void main(String[] args) {
-            askingNumbers();
+            askNumbers();
 
-            generatingThreads();
+            generateThreads();
 
-            endingThreads();
+            endThreads();
 
-            showingResultGeneral();
+            showResultGeneral();
 
-            showingResultParticular();
+            showResultParticular();
         }
 
 
-        private static void showingResultGeneral(){
+        private static void showResultGeneral(){
             long endOfPrimeNumbersGeneral = System.currentTimeMillis();
             System.out.print("\nGeneral list result: " );
             Collections.sort(listOfPrimeNumbersGeneral);
@@ -41,7 +41,7 @@ public class Task2 {
             System.out.print("\nThe function was running withing " + (endOfPrimeNumbersGeneral - startTime) + " sec");
         }
 
-        private static void showingResultParticular(){
+        private static void showResultParticular(){
             long endOfPrimeNumbersParticular = System.currentTimeMillis();
             System.out.print("\nParticular list result: " );
             Collections.sort(listOfPrimeNumbersParticular);
@@ -52,21 +52,19 @@ public class Task2 {
         }
 
 
-        private static void endingThreads() {
+        private static void endThreads() {
             executor.shutdown();
         }
 
-        private static void generatingThreads(){
-            checkingQuantityOfPossibleThreads();
+        private static void generateThreads(){
+            checkQuantityOfPossibleThreads();
             executor = Executors.newFixedThreadPool(lastThreadIndex);
             for (int i = 0; i < lastThreadIndex; i++) {
-                //mapOfThreads.put(i, new PrimeNumberSearch2());
-                //mapOfThreads.get(i).start();
-                executor.execute(new PrimeNumberSearch2(i));
+            executor.execute(new PrimeNumberSearch2(i));
             }
         }
 
-        private static void checkingQuantityOfPossibleThreads(){
+        private static void checkQuantityOfPossibleThreads(){
             lastThreadIndex = quantityOfThreads;
             if (quantityOfThreads > lastDigit - firstDigit ) {
                 lastThreadIndex = Math.min(quantityOfThreads, (lastDigit - firstDigit));
@@ -74,7 +72,7 @@ public class Task2 {
             }
         }
 
-        private static void askingNumbers(){
+        private static void askNumbers(){
             System.out.println("Type the first digit" );
             firstDigit = readerInteger();
             System.out.println("Type the last digit" );

@@ -2,7 +2,7 @@ package task2annotation.annotation;
 
 import java.io.IOException;
 
-public class StartAnnotationProj {
+public class StartAnnotationProject {
     public static void main(String[] args) throws IOException {
 
         ItemName itemName = Factory.getInstance( ).createFieldName( );

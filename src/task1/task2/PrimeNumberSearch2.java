@@ -12,7 +12,7 @@ public class PrimeNumberSearch2 implements Runnable{
 
     public void run(){
         cycle();
-        generatingValueParticularlist();
+        generateValueParticularList();
 
     }
 
@@ -20,7 +20,7 @@ public class PrimeNumberSearch2 implements Runnable{
         this.count = count;
     }
 
-    private void generatingValueParticularlist(){
+    private void generateValueParticularList(){
         Task2.listOfPrimeNumbersParticular.addAll(listOfPrimeNumbers);
     }
 

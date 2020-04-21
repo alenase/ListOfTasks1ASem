@@ -14,16 +14,15 @@ public class PrimeNumberSearch extends Thread {
 
     public void run(){
         cycle();
-        generatingValueParticularlist();
+        generateValueParticularlist();
 
     }
 
-    private void generatingValueParticularlist(){
+    private void generateValueParticularlist(){
         Task1.listOfPrimeNumbersParticular.addAll(listOfPrimeNumbers);
     }
 
     private void cycle() {
-        //System.out.println(firstIndex() + " " + lastIndex() ); //checking steps
         for (int i = firstIndex() ; i <= lastIndex(); i++) {
             if (ifPrimeNumber(i) && !isInterrupted()) {
                 listOfPrimeNumbers.add(i);

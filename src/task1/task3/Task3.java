@@ -55,16 +55,4 @@ public class Task3 {
 
     }
 
-
-
-
-    /*private static void showAllWords(){
-        for (String word: words) {
-            System.out.print(word + " ");
-        }
-    }
-    */
-
-
-
 }

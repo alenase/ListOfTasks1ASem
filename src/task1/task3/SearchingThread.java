@@ -5,7 +5,7 @@ public class SearchingThread extends Thread{
     @Override
     public void run() {
         search();
-        showingLongestString();
+        showLongestString();
     }
 
 
@@ -77,7 +77,7 @@ public class SearchingThread extends Thread{
         return longestString;
     }
 
-    private static void showingLongestString(){
+    private static void showLongestString(){
         int count = 0;
         String longestString= findLongestString();
         System.out.println("Longest string is " + longestString );

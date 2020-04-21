@@ -15,18 +15,18 @@ public class Task1 {
     static long startTime = System.currentTimeMillis();
 
     public static void main(String[] args) {
-        askingNumbers();
+        askNumbers();
 
-        generatingThreads();
+        generateThread();
 
-        endingThreads();
+        stopThreads();
 
-        showingResultGeneral();
+        showResultGeneral();
 
     }
 
 
-    private static void showingResultGeneral(){
+    private static void showResultGeneral(){
         long endOfPrimeNumbersGeneral = System.currentTimeMillis();
         System.out.print("\nGeneral list result: " );
         Collections.sort(listOfPrimeNumbersGeneral);
@@ -38,7 +38,7 @@ public class Task1 {
 
 
 
-    private static void endingThreads() {
+    private static void stopThreads() {
         for (Thread thread : listOfThreads) {
             try{
                 thread.join();
@@ -48,16 +48,15 @@ public class Task1 {
         }
     }
 
-    private static void generatingThreads(){
-        checkingQuantityOfPossibleThreads();
-        //System.out.println(lastThreadIndex );
+    private static void generateThread(){
+        checkQuantityOfPossibleThreads();
         for (int i = 0; i < lastThreadIndex; i++) {
             listOfThreads.add(new PrimeNumberSearch(i));
             listOfThreads.get(i).start();
         }
     }
 
-    private static void checkingQuantityOfPossibleThreads(){
+    private static void checkQuantityOfPossibleThreads(){
         lastThreadIndex = quantityOfThreads;
         if (quantityOfThreads > lastDigit - firstDigit ) {
             lastThreadIndex = Math.min(quantityOfThreads, (lastDigit - firstDigit));
@@ -65,7 +64,7 @@ public class Task1 {
         }
     }
 
-    private static void askingNumbers(){
+    private static void askNumbers(){
         System.out.println("Type the first digit" );
         firstDigit = readerInteger();
         System.out.println("Type the last digit" );

@@ -1,6 +1,7 @@
 package task2annotation.annotation;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.net.URL;
@@ -23,16 +24,13 @@ public class Factory {
     }
 
     private static Factory createContextInitializer() throws IOException {
-        ClassLoader loader = Thread.currentThread().getContextClassLoader();
-        URL fileUrl = loader.getResource(FILE_NAME);
-
-        if (Objects.isNull(fileUrl)) {
+        URL resourceUrl = Thread.currentThread().getContextClassLoader().getResource("");
+        if (Objects.isNull(resourceUrl)) {
             throw new NoSuchFileException(FILE_NAME);
         }
 
-        BufferedReader reader = Files.newBufferedReader(Paths.get(fileUrl.getPath().replaceFirst("/", "")));
-        props.load(reader);
-
+        String defaultConfigPath = resourceUrl.getPath() + FILE_NAME;
+        props.load(new FileInputStream(defaultConfigPath));
         return new Factory();
     }
 

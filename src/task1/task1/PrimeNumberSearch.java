@@ -16,7 +16,6 @@ public class PrimeNumberSearch extends Thread {
     }
 
     private void cycle() {
-        //System.out.println(firstIndex() + " " + lastIndex() ); //checking steps
         for (int i = firstIndex() ; i <= lastIndex(); i++) {
             if (ifPrimeNumber(i) && !isInterrupted()) {
                 Task1.listOfPrimeNumbersGeneral.add(i);
