@@ -1,4 +1,4 @@
-package task1.task2;
+package main.task1.task2;
 
 import java.io.BufferedReader;
 import java.io.IOException;

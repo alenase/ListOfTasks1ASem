@@ -1,4 +1,4 @@
-package task2annotation.annotation;
+package main.task2annotation.annotation;
 
 public class ItemName {
 

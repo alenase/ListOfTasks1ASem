@@ -1,13 +1,10 @@
-package task2annotation.annotation;
+package main.task2annotation.annotation;
 
-import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.net.URL;
-import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
-import java.nio.file.Paths;
 import java.util.Objects;
 import java.util.Properties;
 

@@ -1,4 +1,4 @@
-package task1.task3;
+package main.task1.task3;
 
 import java.io.*;
 import java.util.ArrayList;

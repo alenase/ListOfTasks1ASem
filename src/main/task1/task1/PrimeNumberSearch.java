@@ -1,36 +1,29 @@
-package task1.task1Subtask;
-
-import java.util.ArrayList;
-import java.util.List;
+package main.task1.task1;
 
 public class PrimeNumberSearch extends Thread {
     int count;
-    private static List<Integer> listOfPrimeNumbers = new ArrayList<>();
+
     private boolean stepCheck = false;
 
-    PrimeNumberSearch(int count){
+    public PrimeNumberSearch(int count){
         this.count = count;
     }
 
     public void run(){
         cycle();
-        generateValueParticularlist();
 
-    }
 
-    private void generateValueParticularlist(){
-        Task1.listOfPrimeNumbersParticular.addAll(listOfPrimeNumbers);
     }
 
     private void cycle() {
         for (int i = firstIndex() ; i <= lastIndex(); i++) {
             if (ifPrimeNumber(i) && !isInterrupted()) {
-                listOfPrimeNumbers.add(i);
+                Task1.listOfPrimeNumbersGeneral.add(i);
             }
         }
     }
 
-    private boolean ifPrimeNumber(int number){
+    public boolean ifPrimeNumber(int number){
         if (number == 1) return false;
 
         for (int j = 2; j <= number / 2 ; j++) {
